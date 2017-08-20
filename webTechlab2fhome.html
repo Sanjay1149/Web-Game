@@ -1,0 +1,49 @@
+<html>
+<head>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <title >Dragon Ball Z</title>
+    <style>
+      .mainpic{
+        background: url(dbzwall.png) no-repeat fixed;
+        background-size: cover;
+        opacity: 0.8;
+    }
+        .scroll{
+        background-color: aqua;
+        font-family: fantasy;
+        font-size: 40px;
+        animation-name: colorchange;
+        animation-duration: 4s;   
+        animation-iteration-count:1;
+    }
+    
+    @keyframes colorchange{
+        
+    from {
+        font-size: 40px;}
+    to {
+        font-size: 20px;
+        }
+        from{
+            background-color: aqua;
+        }
+        to{
+            background-color: yellow;
+        }
+    }
+      
+    </style>
+</head>
+    <body class="mainpic">
+        
+        
+    <h1 class="head" align="center">Dragon Ball Z</h1>
+    <marquee class="scroll" onmouseover="this.stop()" onmouseout="this.start()">You have entered a no.1 fan of DBZ's web Page, Click the button to Log in  
+        <a href="webTechlab2form.html"><button  class="w3-btn-floating">+</button></a></marquee>
+    <br><br><br>
+        
+        
+    </body>
+</html>

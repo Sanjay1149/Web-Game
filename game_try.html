@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <style>
+            .fif{
+                display: inline;
+            }
+            .button {
+                  padding: 10px 20px;
+                  font-size: 15px;
+                  text-align: center;
+                  cursor: pointer;
+                  color: #fff;
+                  background-color: #4CAF50;
+                  border: none;
+                  border-radius: 15px;
+                  box-shadow: 0 9px #999;
+                }
+
+            .button:hover {background-color: #3e8e41}
+
+            .button:active {
+                  background-color: #3e8e41;
+                  
+                /*the main cause for the pump*/
+                  box-shadow: 0 5px #666;
+                 
+               /* moves the box down */
+                  transform: translateY(4px);
+                }
+        </style>
+    </head>
+    <body>
+        <div class="fif">You are gonna play an amazing game&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> Score : <div id="val" class="fif">0</div> </div><button onclick="window.location.reload()" class="button">Reload</button><br><br><br>
+        <table border="10px solid black">
+             <tr >
+                 <td><button id="b1"  onclick="javascript:show('1','b1')" ><img id="1"  style="float: left; visibility:hidden; height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;"  ></button></td>
+                 <td><button id="b2"  onclick="javascript:show('2','b2')" ><img id="2" style="float: left; visibility:hidden; height:250;  width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+                 <td><button id="b3"  onclick="javascript:show('3','b3')" ><img id="3"  style="float: left; visibility:hidden; height:250;  width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+                 <td><button id="b4"  onclick="javascript:show('4','b4')" ><img id="4"  style="float: left;  visibility:hidden;  height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+            </tr>
+             <tr >
+                 <td><button id="b5"  onclick="javascript:show('5','b5')" ><img id="5" style="float: left;  visibility:hidden;  height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+                 <td><button id="b6"  onclick="javascript:show('6','b6')" ><img id="6" style="float: left;  visibility:hidden;  height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+                 <td><button id="b7"  onclick="javascript:show('7','b7')" ><img id="7"  style="float: left;  visibility:hidden;  height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+                 <td><button id="b8"  onclick="javascript:show('8','b8')" ><img id="8"  style="float: left;  visibility:hidden;  height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+            </tr>
+             <tr>
+                 <td><button id="b9"  onclick="javascript:show('9','b9')" ><img id="9"  style="float: left;  visibility:hidden;  height: 250px; width: 300px; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+                 <td><button id="b10" onclick="javascript:show('10','b10')" ><img id="10" style="float: left;  visibility:hidden;  height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+                 <td><button id="b11" onclick="javascript:show('11','b11')" ><img id="11" style="float: left;  visibility:hidden;  height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+                 <td><button id="b12" onclick="javascript:show('12','b12')" ><img id="12"  style="float: left;  visibility:hidden;  height:250; width: 300; margin-right: 1%; margin-bottom: 0.5em;" ></button></td>
+            </tr>
+        </table>
+        
+        
+    <script type="text/javascript">
+        
+        window.onload= function(){shuffleArray()};
+        
+        var count=0,score=0,img1,but1,tries=0,p=0;
+        function show(a,b){
+            var img = document.getElementById(a);
+            var but=  document.getElementById(b);
+            img.style.visibility='visible';
+            count++;
+            
+            if(count==1){
+                 img1=img;
+                 but1=but;
+            }
+            if(count==2){
+ 
+                tries++;
+                var img2=img;
+                var but2=but;
+                count=0;
+                if(img1.src==img2.src){
+                    but1.disabled="true";
+                    but2.disabled="true";
+                    img1="";
+                    img2="";
+                    score++;
+                    p++;
+                }
+                else{
+
+            
+                    
+             setTimeout(
+              function(){
+              img1.style.visibility='hidden'; 
+               img2.style.visibility='hidden';
+                }, 1000);
+                 //confirm("sda");  
+                     // img2.style.visibility='visible';
+                      /* setTimeout(
+                      function(){ 
+
+                }, 1000);*/
+                    score--;  
+                }
+               
+             //   img1.style.visibility='hidden';
+              //    img2.style.visibility='hidden';
+            }
+            
+                    document.getElementById("val").innerHTML=score;
+            
+            if(p==6){
+                if(score<=0)
+                var ans = confirm("Congrats you solved in "+tries+" Tries but sorry your score is "+score +"\n\nDo u want to try again ???");
+                else
+                var ans = confirm("Congrats you solved in "+tries+" Tries and your score is " + score + "  which is awesome. \n\nDo you want to try again ??? " );
+                
+
+                if(ans==true){
+                    window.location.reload();
+                }
+                else{
+                    document.location.href="webTechLab2fhome.html";
+                }
+
+            }
+            
+        }
+        
+        var arr = [1,2,3,4,5,8,8,5,4,3,2,1];
+        
+        function shuffleArray(){
+            
+            for(var i=arr.length-1;i>0;i--){
+                var j = Math.floor(Math.random()*(i+1));
+                var temp =arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+            
+            for(var i=0;i<arr.length;i++){
+                document.getElementById(i+1).src="dbz"+arr[i]+".jpg";
+                //img.style.src="dbz"+arr[i]+".jpg";
+               // alert(document.getElementById(i+1).src+" " + arr[i]+ " and " + i );
+            }
+        }
+    
+        
+    </script>
+        
+    </body>
+</html>

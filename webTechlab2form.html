@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <style>
+        #myProgress {
+          position: relative;
+          width: 100%;
+          height: 30px;
+          background-color: #ddd;
+        }
+
+        #myBar {
+          position: absolute;
+          width: 1%;
+          height: 100%;
+          background-color: #4CAF50;
+        }
+        
+        .tab{
+            padding: 100px;
+            border: 4px solid black;
+        }
+    </style>
+    <script>
+        
+        function valid(){
+            
+            //Getting values
+            var name = document.f1.name.value;
+            var pass = document.f1.password.value;
+            var x =document.f1.email.value;
+            var phone = document.f1.phone.value;
+            var val = true;
+            
+            
+            
+            //Getting 1st value
+            var first = name.charAt(0);
+            
+            //For Progress bar animation
+            var elem = document.getElementById("myBar"); 
+            var width = 0;  
+            
+            
+            //Checking name
+            if (name==null || name==""){  
+                    alert("Name can't be blank");
+                    document.getElementById("nameloc").innerHTML=  "*Name can't be blank";
+                    val = false;
+                }
+            else{
+                document.getElementById("nameloc").innerHTML=  "";
+            }
+            
+            if(val==true)
+            { 
+                for(var i=0;i<10;i++){
+                if(first==i){
+                    
+                    alert(" Name must start with alphabet");
+                    document.getElementById("nameloc").innerHTML=  "*Name must start with alphabet";
+                    val=false;
+                    }
+                }
+                if(val==true){
+                    document.getElementById("nameloc").innerHTML=  "";
+                    width+=25;
+             }
+            }
+            
+            
+    /*    //Updating progress
+            if(val==true){
+                width+=33;
+            }
+            
+            
+            val=true;*/
+            
+            //Checking email
+            var atposition=x.indexOf("@");  
+            var dotposition=x.lastIndexOf(".");  
+            if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length)
+            {  
+                    alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
+                    document.getElementById("emailloc").innerHTML=  "*Please enter a valid e-mail address";
+                    val=false;  
+            }else{
+                document.getElementById("emailloc").innerHTML=  "";
+                width+=25;
+            }  
+           
+          /*   //Updating progress
+            if(val==true)
+                {
+                    width+=33;
+                }
+            
+            
+            val=true;*/
+            //Checking pass length
+             if(pass.length<6){  
+                    alert("Password must be at least 6 characters long");
+                    document.getElementById("passwordloc").innerHTML=  "*Password must be at least 6 characters long";
+                    val=false;
+             }
+            else{
+                document.getElementById("passwordloc").innerHTML=  "";
+                width+=25;
+            }
+            
+         /*   //Updating Progress
+            if(val==true){
+                width+=33;
+            }
+            */
+            if(phone.length==10){
+                                if(phone.match(/^[0-9]+$/))
+                {
+                    document.getElementById("phoneloc").innerHTML=  "";
+                    width+=25;
+                }
+                else{
+                    val=false;
+                alert("Enter a Valid Phone number");
+                document.getElementById("phoneloc").innerHTML="*Enter a 10 digit number";
+                }
+            }
+            else{
+
+                val=false;
+                alert("Enter a Valid Phone number");
+                document.getElementById("phoneloc").innerHTML="*Enter a 10 digit number";
+            }
+            
+            
+          elem.style.width = width + '%'; 
+            
+            if(width==100){
+                alert("done");
+                //document.location.href = "";
+            }
+            
+            return val;
+        }
+        
+    </script>
+    <body>
+        <form name="f1" action="game_try.html" onsubmit="return valid()">
+        
+            <table class="tab" cellpadding=10 align="center"> 
+                <tr>
+                    <td>Enter Name:</td>
+                    <td><input type="text" name="name" placeholder="Enter the name"/>  
+                <span id="nameloc" style="color:red"></span></td>
+                </tr>  
+                <tr>
+                    <td>Enter Email ID:</td>
+                    <td><input type="text" name="email" placeholder="Enter the email"/>
+                    <span id="emailloc" style="color:red"></span></td>
+                </tr>
+                <tr>
+                    <td>Enter Password:</td>
+                    <td><input type="password" name="password" placeholder="Pass must be 6 char long"/>  
+                <span id="passwordloc" style="color:red"></span></td>
+                </tr>  
+                <tr>
+                    <td>Phone number:</td>
+                    <td><input type="text" name="phone" placeholder="Type your phone number"/>  
+                <span id="phoneloc" style="color:red"></span></td>
+                </tr>  
+                <tr align="center"><td colspan="2"><input type="submit" value="register"/></td></tr>  
+            </table>  
+            
+            <br><br><br>
+            
+            <div id="myProgress" align="center">
+              <div id="myBar"></div>
+            </div>
+
+        </form>  
+    </body>
+</html>
